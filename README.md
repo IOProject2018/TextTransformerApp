@@ -1,4 +1,6 @@
 # TextTransformerApp
+![Build status](<https://travis-ci.com/IOProject2018/TextTransformerApp.svg?branch=develop>)
+Rejestr Produktu https://goo.gl/KvGKHz
 Rejestr Produktu https://trello.com/b/9JWJnCzx/texttransformer
 
 # Zasady pracy z kodem
