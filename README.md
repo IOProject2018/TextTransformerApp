@@ -1,4 +1,5 @@
 # TextTransformerApp
+![Build status](<https://travis-ci.com/IOProject2018/TextTransformerApp.svg?branch=develop>)
 Rejestr Produktu https://goo.gl/KvGKHz
 
 # Zasady pracy z kodem
