@@ -1,5 +1,5 @@
 # TextTransformerApp
-Rejestr Produktu https://goo.gl/KvGKHz
+Rejestr Produktu https://trello.com/b/9JWJnCzx/texttransformer
 
 # Zasady pracy z kodem
 * wybieramy zadanie (przypisujemy się do niego)
@@ -11,7 +11,6 @@ Rejestr Produktu https://goo.gl/KvGKHz
 * usuwamy branch roboczy, odhaczamy zadanie jako zakończone
 
 # Zasady zadań i ocen
-* są zadania administracyjne (Prowadzenie), infrastrukturalne (DoD) i programistyczne (BV), wszystkie będą na pewno na trello, postaram się żeby były też tutaj na tyle na ile będzie się dało
-* postaram się ocenić zadania z DOD i Prowadzenia czasowo, poproszę was pewnie o pomoc (dzisiaj-jutro to będzie)
-* jak będzie gotowe dam info i będzie można brać kto co chce. Tak żeby każdy miał tyle samo czasowo do zrobienia
+* są zadania administracyjne (Prowadzenie), infrastrukturalne (DoD) i programistyczne (BV), wszystkie będą na pewno na trello
+* każdy bierze co chce tak żeby każdy miał tyle samo czasowo do zrobienia
 * na koniec sprintu każdy dostaje max punktów lub % punktów odpowiadający ilości zadań (czasowo, a nie punktowo) jakie wykonał
