@@ -1,3 +1,6 @@
+# Pliki wygenerowane z budowania mavena
+target/
+
 # Compiled class file
 *.class
 
