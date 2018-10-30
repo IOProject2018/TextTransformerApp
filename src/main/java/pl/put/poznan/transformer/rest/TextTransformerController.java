@@ -6,13 +6,21 @@ import pl.put.poznan.transformer.logic.TextTransformer;
 
 import java.util.Arrays;
 
-
+/**
+ * @author 
+ *
+ */
 @RestController
 @RequestMapping("/{text}")
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
+    /**
+     * @param text
+     * @param transforms
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@PathVariable String text,
                               @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
@@ -26,6 +34,11 @@ public class TextTransformerController {
         return transformer.transform(text);
     }
 
+    /**
+     * @param text
+     * @param transforms
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public String post(@PathVariable String text,
                       @RequestBody String[] transforms) {
