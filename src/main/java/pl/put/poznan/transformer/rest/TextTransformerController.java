@@ -7,7 +7,10 @@ import pl.put.poznan.transformer.logic.Response;
 
 import java.util.Arrays;
 
-
+/**
+ * @author 
+ *
+ */
 @RestController
 @RequestMapping("/{text}")
 public class TextTransformerController {
@@ -15,9 +18,15 @@ public class TextTransformerController {
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
     //Probably we may only want to use GET at this moment
+
+    /**
+     * @param text
+     * @param transforms
+     * @return
+     */
     @GetMapping(produces = "application/json")
     public Response get(@PathVariable String text,
-                              @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+                        @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
 
         // log the parameters
         logger.debug(text);

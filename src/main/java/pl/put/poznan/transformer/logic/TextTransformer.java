@@ -7,10 +7,17 @@ public class TextTransformer {
 
     private final String[] transforms;
 
+    /**
+     * @param transforms
+     */
     public TextTransformer(String[] transforms){
         this.transforms = transforms;
     }
 
+    /**
+     * @param text
+     * @return
+     */
     public String transform(String text){
         // of course normally it would to something based on transforms
         return text.toUpperCase();
