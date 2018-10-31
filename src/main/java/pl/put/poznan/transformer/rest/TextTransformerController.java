@@ -2,8 +2,9 @@ package pl.put.poznan.transformer.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.Response;
+import pl.put.poznan.transformer.logic.TextTransformerInterface;
+import pl.put.poznan.transformer.logic.ToUpperTransformer;
 
 import java.util.Arrays;
 
@@ -32,9 +33,18 @@ public class TextTransformerController {
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
+        String result = text;
+
         // do the transformation, you should run your logic here, below just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
-        return new Response(transformer.transform(text));
+        TextTransformerInterface transformer = null;
+        for(String transform: transforms) {
+            if(transform.equals("upper"))
+                transformer = new ToUpperTransformer();
+
+            result = transformer.transform(text);
+        }
+
+        return new Response(result);
     }
 }
 
