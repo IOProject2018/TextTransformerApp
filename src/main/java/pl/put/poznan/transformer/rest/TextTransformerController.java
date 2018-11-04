@@ -1,4 +1,5 @@
 package pl.put.poznan.transformer.rest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -7,8 +8,7 @@ import pl.put.poznan.transformer.logic.*;
 import java.util.Arrays;
 
 /**
- * @author 
- *
+ * @author
  */
 @RestController
 @RequestMapping("/{text}")
@@ -35,21 +35,24 @@ public class TextTransformerController {
 
         // do the transformation, you should run your logic here, below just a silly example
         TextTransformerInterface transformer = null;
-        for(String transform: transforms) {
-            if(transform.equals("upper"))
+        for (String transform : transforms) {
+            if (transform.equals("upper"))
                 transformer = new ToUpperTransformer();
 
-            if(transform.equals("lower"))
+            if (transform.equals("lower"))
                 transformer = new ToLowerTransformer();
 
-            if(transform.equals("capitalize"))
+            if (transform.equals("capitalize"))
                 transformer = new ToCapitalizeTransformer();
 
-            if(transform.equals("delete"))
+            if (transform.equals("delete"))
                 transformer = new DeletePLSymbolsTrarnsformer();
 
-            if(transform.equals("inverse"))
+            if (transform.equals("inverse"))
                 transformer = new InverseTextTransformer();
+
+            if (transform.equals("duplicate"))
+                transformer = new DeleteDuplicateWordsTransformer();
 
             result = transformer.transform(text);
         }
