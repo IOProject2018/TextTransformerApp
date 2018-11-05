@@ -10,6 +10,10 @@ import java.util.regex.Pattern;
 
 public class DeleteDuplicateWordsTransformer implements TextTransformerInterface {
 
+    /**
+     * @param text
+     * @return sformatowany text - po usunięciu duplikatów
+     */
     public String transform(String text) {
         String regex = "\\b(\\w+)(\\s+\\1\\b)+";
 

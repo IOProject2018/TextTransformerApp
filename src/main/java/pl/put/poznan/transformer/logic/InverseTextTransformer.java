@@ -5,6 +5,10 @@ package pl.put.poznan.transformer.logic;
  */
 public class InverseTextTransformer implements TextTransformerInterface {
 
+    /**
+     * @param text
+     * @return sformatowany text - obrócenie ciągu znaków
+     */
     public String transform(String text) {
         StringBuilder result = new StringBuilder();
         result.append(text);
