@@ -54,6 +54,10 @@ public class TextTransformerController {
             if (transform.equals("duplicate"))
                 transformer = new DeleteDuplicateWordsTransformer();
 
+            if (transform.equals("latex"))
+                transformer = new LatexSymbolsTransformer();
+
+
             result = transformer.transform(text);
         }
 
