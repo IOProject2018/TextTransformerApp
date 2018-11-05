@@ -55,7 +55,7 @@ public class TextTransformerController {
                 transformer = new DeleteDuplicateWordsTransformer();
 
             if (transform.equals("latex"))
-                transformer = new LatexSymbolsTrarnsformer();
+                transformer = new LatexSymbolsTransformer();
 
 
             result = transformer.transform(text);
