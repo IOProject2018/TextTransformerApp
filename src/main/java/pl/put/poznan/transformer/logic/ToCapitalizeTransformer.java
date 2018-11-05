@@ -6,6 +6,10 @@ package pl.put.poznan.transformer.logic;
 
 public class ToCapitalizeTransformer implements TextTransformerInterface {
 
+    /**
+     * @param text
+     * @return sformatowany text - słowa zaczynają się wielką literą
+     */
     public String transform(String text) {
 
         StringBuilder result = new StringBuilder(text.length());

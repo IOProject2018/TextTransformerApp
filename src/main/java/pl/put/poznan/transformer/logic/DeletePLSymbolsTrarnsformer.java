@@ -8,6 +8,10 @@ import java.util.regex.Pattern;
  */
 public class DeletePLSymbolsTrarnsformer implements TextTransformerInterface {
 
+    /**
+     * @param text
+     * @return sformatowany text - po usunięciu polskich znaków
+     */
     public String transform(String text) {
             text = text.replaceAll("Ł", "L");
             text = text.replaceAll("ł", "l");
