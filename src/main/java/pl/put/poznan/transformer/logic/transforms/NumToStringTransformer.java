@@ -33,20 +33,24 @@ public class NumToStringTransformer implements TextTransformerInterface {
      */
     private static String floatToString(String word) {
         String czesci[] = {"dziesiąt", "setn", "tysięczn"};
-        String koncowki[] = {"ych", "a", "e", "e", "e", "ych", "ych", "ych", "ych", "ych"};
+        String koncowki[] = {"ych", "a", "e", "e", "e"};
         try {
             Float.parseFloat(word);
         } catch (NumberFormatException e) {
             return word;
         }
 
-        String parts[] = word.split("[,.]");
+        String parts[] = word.split("[.,]");
         String reszta = "";
         if(parts.length > 1) {
             reszta += " i ";
-            reszta += intToString(Integer.parseInt(parts[1])) + " ";
+            if(parts[1].length() > 3)
+                parts[1] = parts[1].substring(0,3);
+            int val = Integer.parseInt(parts[1]);
+            reszta += intToString(val) + " ";
             reszta += czesci[parts[1].length()-1];
-            reszta += koncowki[Integer.parseInt(parts[1].substring(parts[1].length()-1))];
+            if(val > 4) reszta += "ych";
+            else reszta += koncowki[val];
         }
 
         return intToString(Integer.parseInt(parts[0])) + reszta;
@@ -93,24 +97,24 @@ public class NumToStringTransformer implements TextTransformerInterface {
                 value %= 10;
             }
             else if(value < 500) {
-                value %= 100;
                 result += setki[(value/100)-1];
+                value %= 100;
             }
             else if(value < 1000) {
-                value%=100;
                 result += jednosci[value/100]+"set";
+                value%=100;
             }
             else if(value < 2000) {
-                value %= 1000;
                 result += "tysiąc";
+                value %= 1000;
             }
             else if(value < 5000) {
-                value %= 1000;
                 result += jednosci[value/1000]+" tysiące";
+                value %= 1000;
             }
             else {
-                value %= 1000;
                 result += intToString(value/1000) + " tysięcy";
+                value %= 1000;
             }
 
             result += " ";
