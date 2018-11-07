@@ -47,22 +47,24 @@ public class NumToStringTransformer implements TextTransformerInterface {
             if(parts[1].length() > 3)
                 parts[1] = parts[1].substring(0,3);
             int val = Integer.parseInt(parts[1]);
-            reszta += intToString(val) + " ";
+            reszta += intToString(val, true) + " ";
             reszta += czesci[parts[1].length()-1];
             if(val > 4) reszta += "ych";
             else reszta += koncowki[val];
         }
 
-        return intToString(Integer.parseInt(parts[0])) + reszta;
+        return intToString(Integer.parseInt(parts[0]), false) + reszta;
     }
 
     /**
      * The function that converts integer in string to text representation of that integer
      * @param value is a value to be changed to text
+     * @param isrest is true if number represent the rest
      * @return is a text representation of integer
      */
-    private static String intToString(int value) {
+    private static String intToString(int value, Boolean isrest) {
         String jednosci[] = {"zero", "jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć"};
+        String jedreszta[] = {"zero", "jedna", "dwie"};
         String nascie[] = {"dziesięć", "jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"};
         String dziesiatki[] = {"dwadzieścia", "trzydzieści", "czterdzieści"};
         String setki[] = {"sto", "dwieście", "trzysta", "czterysta"};
@@ -80,7 +82,11 @@ public class NumToStringTransformer implements TextTransformerInterface {
         }
 
         while(value!=0) {
-            if(value < 10) {
+            if(isrest && value < 3) {
+                result += jedreszta[value];
+                break;
+            }
+            else if(value < 10) {
                 result += jednosci[value];
                 break;
             }
@@ -113,7 +119,7 @@ public class NumToStringTransformer implements TextTransformerInterface {
                 value %= 1000;
             }
             else {
-                result += intToString(value/1000) + " tysięcy";
+                result += intToString(value/1000, false) + " tysięcy";
                 value %= 1000;
             }
 
