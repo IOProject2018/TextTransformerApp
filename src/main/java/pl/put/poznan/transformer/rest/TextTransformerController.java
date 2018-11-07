@@ -50,6 +50,9 @@ public class TextTransformerController {
 
             if(transform.equals("inverse"))
                 transformer = new InverseTextTransformer();
+            
+            if(transform.equals("no-shortcut"))
+                transformer = new ToShortcutTransformer();
 
             result = transformer.transform(text);
         }
