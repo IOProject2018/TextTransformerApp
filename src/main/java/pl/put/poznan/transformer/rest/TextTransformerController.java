@@ -54,6 +54,7 @@ public class TextTransformerController {
             case "duplicate": return new DeleteDuplicateWordsTransformer();
             case "latex": return new LatexSymbolsTransformer();
             case "verbal": return new NumToStringTransformer();
+            case "no-shortcut": return new ToShortcutTransformer();
             default: return null; //TODO: make some NoOpController that does nothing
         }
     }
