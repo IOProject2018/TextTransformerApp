@@ -1,4 +1,7 @@
-package pl.put.poznan.transformer.logic;
+package pl.put.poznan.transformer.logic.transforms;
+
+import pl.put.poznan.transformer.logic.TextTransformerInterface;
+
 /**
  *  Class used to make 'latex like' transformation
  */
