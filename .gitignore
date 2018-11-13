@@ -1,3 +1,9 @@
+# Pliki wygenerowane z budowania mavena
+target/
+
+# Pliki intellij
+.idea/
+
 # Compiled class file
 *.class
 
