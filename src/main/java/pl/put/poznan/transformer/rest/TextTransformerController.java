@@ -54,6 +54,9 @@ public class TextTransformerController {
             if(transform.equals("no-shortcut"))
                 transformer = new ToShortcutTransformer();
 
+//            if(transform.equals("make-shortcuts"))
+//                transformer = new FromShortcutTransformer();
+            
             if (transform.equals("duplicate"))
                 transformer = new DeleteDuplicateWordsTransformer();
 

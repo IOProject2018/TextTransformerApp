@@ -7,7 +7,7 @@ public class FromShortcutTransformer implements TextTransformerInterface
 {
 	/**
      * Funkcja transformująca tekst
-     * @param text tekst bez skrótów przed transformacją
+     * @param text tekst przed transformacją
      * @return tekst ze skróconymi nazwami.
      */
 	public String transform(String text)
