@@ -11,6 +11,6 @@
   </label>
   <button  type="submit" (click)="onSubmit()">Transformuj</button>
 </form>
-<app-drag-drop-list></app-drag-drop-list>
+<app-drag-drop-list (transformationList)="readTransformationList($event)"></app-drag-drop-list>
 
 

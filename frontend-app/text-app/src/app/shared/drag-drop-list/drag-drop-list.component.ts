@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-
-/**
- * @title Drag&Drop connected sorting
- */
 
 @Component({
   selector: 'app-drag-drop-list',
@@ -12,19 +8,21 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class DragDropListComponent {
 
+  @Output() transformationList = new EventEmitter<String[]>();
+
   used = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
   ];
 
   notUsed = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
+    'upper',
+    'lower',
+    'capitalize',
+    'delete',
+    'inverse',
+    'duplicate',
+    'latex',
+    'verbal',
+    'no-shortcut'
   ];
 
   drop(event: CdkDragDrop<string[]>) {
@@ -36,5 +34,6 @@ export class DragDropListComponent {
         event.previousIndex,
         event.currentIndex);
     }
+    this.transformationList.emit(this.used);
   }
 }

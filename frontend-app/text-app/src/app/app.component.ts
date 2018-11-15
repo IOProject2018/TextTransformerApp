@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 export class AppComponent implements OnInit {
   title = 'TextTransformer IO Project 2018';
   textForm: FormGroup;
+  transformationList: String[];
 
 
 
@@ -18,6 +19,10 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  readTransformationList(list: String[]){
+    this.transformationList = list;
   }
 
   private initForm() {
