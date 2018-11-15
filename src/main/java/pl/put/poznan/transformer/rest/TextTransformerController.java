@@ -3,12 +3,14 @@ package pl.put.poznan.transformer.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.*;
+import pl.put.poznan.transformer.logic.TextTransformerInterface;
+import pl.put.poznan.transformer.logic.transforms.*;
+import pl.put.poznan.transformer.model.Response;
 
 import java.util.Arrays;
 
 /**
- * @author
+ * Main controller class of the application
  */
 @RestController
 @RequestMapping("/{text}")
@@ -19,45 +21,42 @@ public class TextTransformerController {
     //Probably we may only want to use GET at this moment
 
     /**
-     * @param text
-     * @param transforms
-     * @return
+     * @param text a text passed by user via GET request
+     * @param transforms a comma-separated list of transforms the user wants to perform
+     * @return a serialized JSON object containing transformed text
      */
     @GetMapping(produces = "application/json")
     public Response get(@PathVariable String text,
-                        @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
+                        @RequestParam(value = "transforms", defaultValue = "upper") String[] transforms) {
 
         // log the parameters
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
         String result = text;
-
-        // do the transformation, you should run your logic here, below just a silly example
-        TextTransformerInterface transformer = null;
-        for (String transform : transforms) {
-            if (transform.equals("upper"))
-                transformer = new ToUpperTransformer();
-
-            if (transform.equals("lower"))
-                transformer = new ToLowerTransformer();
-
-            if (transform.equals("capitalize"))
-                transformer = new ToCapitalizeTransformer();
-
-            if (transform.equals("delete"))
-                transformer = new DeletePLSymbolsTrarnsformer();
-
-            if (transform.equals("inverse"))
-                transformer = new InverseTextTransformer();
-
-            if (transform.equals("duplicate"))
-                transformer = new DeleteDuplicateWordsTransformer();
-
-            result = transformer.transform(text);
-        }
+        for (String transform : transforms) result = findTransformer(transform).transform(result);
 
         return new Response(result);
+    }
+
+    /**
+     * Helper function to find the correct class for the transformation
+     * @param name a name of transformation requested by user
+     * @return a proper transformer class served as an interface
+     */
+    private static TextTransformerInterface findTransformer(String name) {
+        switch(name) {
+            case "upper": return new ToUpperTransformer();
+            case "lower": return new ToLowerTransformer();
+            case "capitalize": return new ToCapitalizeTransformer();
+            case "delete": return new DeletePLSymbolsTrarnsformer();
+            case "inverse": return new InverseTextTransformer();
+            case "duplicate": return new DeleteDuplicateWordsTransformer();
+            case "latex": return new LatexSymbolsTransformer();
+            case "verbal": return new NumToStringTransformer();
+            case "no-shortcut": return new ToShortcutTransformer();
+            default: return null; //TODO: make some NoOpController that does nothing
+        }
     }
 }
 
