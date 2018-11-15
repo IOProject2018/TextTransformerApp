@@ -1,0 +1,27 @@
+<div class="example-container">
+  <h2>Używane transformacje</h2>
+
+  <div
+    cdkDropList
+    #usedList="cdkDropList"
+    [cdkDropListData]="used"
+    [cdkDropListConnectedTo]="[notUsedList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of used" cdkDrag>{{item}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Nieużywane transfomracje</h2>
+
+  <div
+    cdkDropList
+    #notUsedList="cdkDropList"
+    [cdkDropListData]="notUsed"
+    [cdkDropListConnectedTo]="[usedList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of notUsed" cdkDrag>{{item}}</div>
+  </div>
+</div>
