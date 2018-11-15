@@ -36,4 +36,9 @@ export class DragDropListComponent {
     }
     this.transformationList.emit(this.used);
   }
+
+  onSave() {
+    // note: dodajemy nasze sklejone transformacje do notUsed
+      this.notUsed.push(this.used.join(','));
+  }
 }
