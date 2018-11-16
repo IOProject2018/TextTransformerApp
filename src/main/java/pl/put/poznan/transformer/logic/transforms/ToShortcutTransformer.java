@@ -1,5 +1,6 @@
 package pl.put.poznan.transformer.logic.transforms;
 
+import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 import pl.put.poznan.transformer.logic.TextTransformerInterface;
 
 import java.text.Normalizer;
@@ -9,15 +10,20 @@ import java.util.regex.Pattern;
  * The class used to converting shortcuts to full words
  */
 
-public class ToShortcutTransformer implements TextTransformerInterface {
+public class ToShortcutTransformer extends TextTransformerDecorator {
+
+    public ToShortcutTransformer(TextTransformerInterface transformerInterface) {
+        super(transformerInterface);
+    }
 
     /**
      * The function that makes text transformation
-     * @param text text with shortcuts before transformation
+     * @param textIn text with shortcuts before transformation
      * @return text without shortcuts
      */
-    public String transform(String text) {
-         text = text.replaceAll(" np. ", " na przykład ");
+    public String transform(String textIn) {
+        String text = super.transform(textIn);
+        text = text.replaceAll(" np. ", " na przykład ");
         text = text.replaceAll(" Np. ", " Na przykład ");
         text = text.replaceAll(" NP. ", " NA PRZYKŁAD ");
         text = text.replaceAll(" m.in. ", " między innymi ");
