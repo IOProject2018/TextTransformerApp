@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {ListIteam} from "./shared/drag-drop-list/drag-drop-list.component";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class AppComponent implements OnInit {
   title = 'TextTransformer IO Project 2018';
   textForm: FormGroup;
-  transformationList: String[];
+  transformationList: ListIteam[];
 
 
 
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  readTransformationList(list: String[]){
+  readTransformationList(list: ListIteam[]){
     this.transformationList = list;
   }
 

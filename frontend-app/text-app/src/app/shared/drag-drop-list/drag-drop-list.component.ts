@@ -1,6 +1,11 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
+export class ListIteam {
+  key: string;
+  text: string;
+}
+
 @Component({
   selector: 'app-drag-drop-list',
   templateUrl: './drag-drop-list.component.html',
@@ -8,21 +13,47 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class DragDropListComponent {
 
-  @Output() transformationList = new EventEmitter<String[]>();
+  @Output() transformationList = new EventEmitter<ListIteam[]>();
 
-  used = [
-  ];
+  used: ListIteam[] = [];
 
-  notUsed = [
-    'upper',
-    'lower',
-    'capitalize',
-    'delete',
-    'inverse',
-    'duplicate',
-    'latex',
-    'verbal',
-    'no-shortcut'
+  notUsed: ListIteam[] = [
+    {
+      key: 'upper',
+      text: 'Na duże litery'
+    },
+    {
+      key: 'lower',
+      text: 'Na małe litery'
+    },
+    {
+      key: 'capitalize',
+      text: 'Pierwsze litery wielkie'
+    },
+    {
+      key: 'delete',
+      text: 'Usun PL znaki'
+    },
+    {
+      key: 'inverse',
+      text: 'Obróc tekst'
+    },
+    {
+      key: 'duplicate',
+      text: 'Usuń powtorzenia'
+    },
+    {
+      key: 'latex',
+      text: 'Formatuj do formatu latex'
+    },
+    {
+      key: 'verbal',
+      text: 'Zmien liczby na slowa'
+    },
+    {
+      key: 'no-shortcut',
+      text: 'Usun skroty'
+    }
   ];
 
   drop(event: CdkDragDrop<string[]>) {
@@ -39,6 +70,8 @@ export class DragDropListComponent {
 
   onSave() {
     // note: dodajemy nasze sklejone transformacje do notUsed
-      this.notUsed.push(this.used.join(','));
+    const newKey = this.used.map(el => el.key).join(',');
+    const newText = this.used.map(el => el.text).join(',');
+    this.notUsed.push({key: newKey, text: newText})
   }
 }

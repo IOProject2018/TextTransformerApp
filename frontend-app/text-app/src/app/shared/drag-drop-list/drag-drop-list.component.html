@@ -8,7 +8,7 @@
     [cdkDropListConnectedTo]="[notUsedList]"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of used" cdkDrag>{{item}}</div>
+    <div class="example-box" *ngFor="let item of used" cdkDrag>{{item.text}}</div>
   </div>
 </div>
 
@@ -22,6 +22,6 @@
     [cdkDropListConnectedTo]="[usedList]"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of notUsed" cdkDrag>{{item}}</div>
+    <div class="example-box" *ngFor="let item of notUsed" cdkDrag>{{item.text}}</div>
   </div>
 </div>
