@@ -6,7 +6,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { DragDropListComponent } from './shared/drag-drop-list/drag-drop-list.component';
+import {DragDropListComponent} from './shared/drag-drop-list/drag-drop-list.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { DragDropListComponent } from './shared/drag-drop-list/drag-drop-list.co
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     DragDropModule

@@ -12,6 +12,7 @@ import java.util.Arrays;
 /**
  * Main controller class of the application
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/{text}")
 public class TextTransformerController {
