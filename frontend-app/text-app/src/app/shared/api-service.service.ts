@@ -5,7 +5,7 @@ import {map} from "rxjs/operators";
 
 export class TransformerRequest {
   text: string;
-  transforms: string;
+  transforms: string[];
 }
 
 @Injectable({

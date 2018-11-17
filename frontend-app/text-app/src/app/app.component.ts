@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   private static toNewRequest(text: string, transformation: string): TransformerRequest {
     return {
       text: text,
-      transforms: transformation
+      transforms: transformation.split(',')
     }
   }
 
