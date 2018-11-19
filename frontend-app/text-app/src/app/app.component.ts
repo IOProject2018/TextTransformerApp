@@ -22,11 +22,10 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     const text = this.textForm.get('text').value;
-    const transformation = this.transformationList.map(el => el.text).join(',');
+    const transformation = this.transformationList.map(el => el.key).join(',');
     const request = AppComponent.toNewRequest(text, transformation);
     this.apiService.getTransformedText(request).subscribe(resp => {
-      // logowanie odpowiedzi w konsoli
-      console.log(resp);
+      alert(resp.transformed);
     });
   }
 
@@ -43,7 +42,7 @@ export class AppComponent implements OnInit {
   private static toNewRequest(text: string, transformation: string): TransformerRequest {
     return {
       text: text,
-      transforms: transformation.split(',')
+      transforms: transformation
     }
   }
 
