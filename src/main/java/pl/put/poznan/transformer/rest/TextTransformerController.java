@@ -3,6 +3,7 @@ package pl.put.poznan.transformer.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+import pl.put.poznan.transformer.logic.TextTransformerImpl;
 import pl.put.poznan.transformer.logic.TextTransformerInterface;
 import pl.put.poznan.transformer.logic.transforms.*;
 import pl.put.poznan.transformer.model.Response;
@@ -35,10 +36,20 @@ public class TextTransformerController {
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
-        String result = text;
-        for (String transform : transforms) result = findTransformer(transform).transform(result);
+        String result = createTransformationChain(transforms).transform(text);
 
         return new Response(result);
+    }
+
+    /**
+     * Helper function to create decorated transformation chain for strings
+     * @param transforms is an array of string transform directives
+     * @return an interface representing transform chain
+     */
+    private static TextTransformerInterface createTransformationChain(String[] transforms) {
+        TextTransformerInterface chain = new TextTransformerImpl();
+        for (String transform : transforms) chain = decorateTransformer(transform, chain);
+        return chain;
     }
 
     /**
@@ -46,18 +57,18 @@ public class TextTransformerController {
      * @param name a name of transformation requested by user
      * @return a proper transformer class served as an interface
      */
-    private static TextTransformerInterface findTransformer(String name) {
+    private static TextTransformerInterface decorateTransformer(String name, TextTransformerInterface transformerInterface) {
         switch(name) {
-            case "upper": return new ToUpperTransformer();
-            case "lower": return new ToLowerTransformer();
-            case "capitalize": return new ToCapitalizeTransformer();
-            case "delete": return new DeletePLSymbolsTrarnsformer();
-            case "inverse": return new InverseTextTransformer();
-            case "duplicate": return new DeleteDuplicateWordsTransformer();
-            case "latex": return new LatexSymbolsTransformer();
-            case "verbal": return new NumToStringTransformer();
-            case "no-shortcut": return new ToShortcutTransformer();
-            default: return null; //TODO: make some NoOpController that does nothing
+            case "upper": return new ToUpperTransformer(transformerInterface);
+            case "lower": return new ToLowerTransformer(transformerInterface);
+            case "capitalize": return new ToCapitalizeTransformer(transformerInterface);
+            case "delete": return new DeletePLSymbolsTrarnsformer(transformerInterface);
+            case "inverse": return new InverseTextTransformer(transformerInterface);
+            case "duplicate": return new DeleteDuplicateWordsTransformer(transformerInterface);
+            case "latex": return new LatexSymbolsTransformer(transformerInterface);
+            case "verbal": return new NumToStringTransformer(transformerInterface);
+            case "no-shortcut": return new ToShortcutTransformer(transformerInterface);
+            default: return transformerInterface;
         }
     }
 }

@@ -9,5 +9,5 @@ public interface TextTransformerInterface {
      * @param text
      * @return
      */
-    public String transform(String text);
+    String transform(String text);
 }
