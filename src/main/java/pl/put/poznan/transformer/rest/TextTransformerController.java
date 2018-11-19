@@ -13,6 +13,7 @@ import java.util.Arrays;
 /**
  * Main controller class of the application
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/{text}")
 public class TextTransformerController {
@@ -26,6 +27,7 @@ public class TextTransformerController {
      * @param transforms a comma-separated list of transforms the user wants to perform
      * @return a serialized JSON object containing transformed text
      */
+    @CrossOrigin
     @GetMapping(produces = "application/json")
     public Response get(@PathVariable String text,
                         @RequestParam(value = "transforms", defaultValue = "upper") String[] transforms) {

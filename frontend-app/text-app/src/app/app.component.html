@@ -1,0 +1,16 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="453" alt="Put PP Logo" src="../assets/img/putLogoColor.png">
+</div>
+<h2>Dokonaj transformacji tekstu: </h2>
+<form [formGroup]="textForm">
+  <label>
+    <input [formControlName]="'text'" type="text" name="fname">
+  </label>
+  <button  type="submit" (click)="onSubmit()">Transformuj</button>
+</form>
+<app-drag-drop-list (transformationList)="readTransformationList($event)"></app-drag-drop-list>
+
+
