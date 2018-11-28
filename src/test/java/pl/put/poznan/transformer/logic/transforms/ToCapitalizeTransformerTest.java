@@ -20,6 +20,6 @@ public class ToCapitalizeTransformerTest {
         String text = "pierwsze litery male";
         String result = "Pierwsze Litery Male";
 
-        Assert.assertEquals(result, transformer.transform(text));
+        assertThat(transformer.transform(text)).isEqualTo(result);
     }
 }
