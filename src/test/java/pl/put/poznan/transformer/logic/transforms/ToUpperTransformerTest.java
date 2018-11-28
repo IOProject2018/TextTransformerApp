@@ -16,7 +16,7 @@ public class ToUpperTransformerTest {
     }
 
     @Test
-    public void shouldReturnLowerText() {
+    public void shouldReturnUpperText() {
         String text = "tekst malymi literami";
         String result = "TEKST MALYMI LITERAMI";
 

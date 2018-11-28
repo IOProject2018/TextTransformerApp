@@ -16,7 +16,7 @@ public class ToCapitalizeTransformerTest {
     }
 
     @Test
-    public void shouldReturnLowerText() {
+    public void shouldReturnCapitalizeText() {
         String text = "pierwsze litery male";
         String result = "Pierwsze Litery Male";
 
