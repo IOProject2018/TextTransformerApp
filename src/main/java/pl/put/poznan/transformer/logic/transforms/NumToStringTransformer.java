@@ -2,6 +2,7 @@ package pl.put.poznan.transformer.logic.transforms;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 import pl.put.poznan.transformer.logic.TextTransformerInterface;
 
 import java.util.ArrayList;
@@ -12,16 +13,21 @@ import java.util.stream.Collectors;
 /**
  * Class used to convert integers and floats to Polish verbal representation
  */
-public class NumToStringTransformer implements TextTransformerInterface {
+public class NumToStringTransformer extends TextTransformerDecorator {
+
+    public NumToStringTransformer(TextTransformerInterface transformerInterface) {
+        super(transformerInterface);
+    }
 
     private static final Logger logger = LoggerFactory.getLogger(NumToStringTransformer.class);
 
     /**
      * Main transformation function
-     * @param text input text that contains numbers
+     * @param textIn input text that contains numbers
      * @return formatted text with verbal numbers representation
      */
-    public String transform(String text) {
+    public String transform(String textIn) {
+        String text = super.transform(textIn);
         ArrayList<String> words = new ArrayList<>(Arrays.asList(text.split(" ")));
         return words.stream().map(NumToStringTransformer::floatToString).collect(Collectors.joining(" "));
     }
@@ -43,7 +49,8 @@ public class NumToStringTransformer implements TextTransformerInterface {
         String parts[] = word.split("[.,]");
         String reszta = "";
         if(parts.length > 1) {
-            reszta += " i ";
+            if(Integer.parseInt(parts[0])!=0)
+                reszta += " i ";
             if(parts[1].length() > 3)
                 parts[1] = parts[1].substring(0,3);
             int val = Integer.parseInt(parts[1]);
@@ -73,7 +80,7 @@ public class NumToStringTransformer implements TextTransformerInterface {
 
         if(value > 999999) {
             logger.warn("Input number "+value+"exceeded limit!");
-            return result;
+            return String.valueOf(value);
         }
 
         if(value < 0) {
