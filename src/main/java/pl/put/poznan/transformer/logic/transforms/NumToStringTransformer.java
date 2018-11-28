@@ -49,7 +49,8 @@ public class NumToStringTransformer extends TextTransformerDecorator {
         String parts[] = word.split("[.,]");
         String reszta = "";
         if(parts.length > 1) {
-            reszta += " i ";
+            if(Integer.parseInt(parts[0])!=0)
+                reszta += " i ";
             if(parts[1].length() > 3)
                 parts[1] = parts[1].substring(0,3);
             int val = Integer.parseInt(parts[1]);
@@ -79,7 +80,7 @@ public class NumToStringTransformer extends TextTransformerDecorator {
 
         if(value > 999999) {
             logger.warn("Input number "+value+"exceeded limit!");
-            return result;
+            return String.valueOf(value);
         }
 
         if(value < 0) {
