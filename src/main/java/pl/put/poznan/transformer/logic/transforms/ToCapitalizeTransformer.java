@@ -26,6 +26,6 @@ public class ToCapitalizeTransformer extends TextTransformerDecorator {
 
         }
 
-        return result.toString();
+        return result.toString().trim();
     }
 }
