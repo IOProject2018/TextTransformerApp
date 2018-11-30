@@ -23,21 +23,21 @@ public class ToShortcutTransformer extends TextTransformerDecorator {
      */
     public String transform(String textIn) {
         String text = super.transform(textIn);
-        text = text.replaceAll(" np. ", " na przykład ");
-        text = text.replaceAll(" Np. ", " Na przykład ");
-        text = text.replaceAll(" NP. ", " NA PRZYKŁAD ");
-        text = text.replaceAll(" m.in. ", " między innymi ");
-        text = text.replaceAll(" M.in. ", " Między innymi ");
-        text = text.replaceAll(" M.IN. ", " MIĘDZY INNYMI ");
-        text = text.replaceAll(" itp. ", " i tym podobne ");
-        text = text.replaceAll(" Itp. ", " I tym podobne ");
-        text = text.replaceAll(" ITP. ", " I TYM PODOBNE ");
-        text = text.replaceAll(" itd. ", " i tak dalej ");
-        text = text.replaceAll(" Itd. ", " I tak dalej ");
-        text = text.replaceAll(" ITD. ", " I TAK DALEJ ");
-        text = text.replaceAll(" prof. ", " profesor ");
-        text = text.replaceAll(" Prof. ", " Profesor ");
-        text = text.replaceAll(" PROF. ", " PROFESOR ");
+        text = text.replaceAll("np.", "na przykład");
+        text = text.replaceAll("Np.", "Na przykład");
+        text = text.replaceAll("NP.", "NA PRZYKŁAD");
+        text = text.replaceAll("m.in.", "między innymi");
+        text = text.replaceAll("M.in.", "Między innymi");
+        text = text.replaceAll("M.IN.", "MIĘDZY INNYMI");
+        text = text.replaceAll("itp.", "i tym podobne");
+        text = text.replaceAll("Itp.", "I tym podobne");
+        text = text.replaceAll("ITP.", "I TYM PODOBNE");
+        text = text.replaceAll("itd.", "i tak dalej");
+        text = text.replaceAll("Itd.", "I tak dalej");
+        text = text.replaceAll("ITD.", "I TAK DALEJ");
+        text = text.replaceAll("prof.", "profesor");
+        text = text.replaceAll("Prof.", "Profesor");
+        text = text.replaceAll("PROF.", "PROFESOR");
         text = text.replaceAll(" dr ", " doktor ");
         text = text.replaceAll(" Dr ", " Doktor ");
         text = text.replaceAll(" DR ", " DOKTOR ");
