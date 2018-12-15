@@ -68,6 +68,7 @@ public class TextTransformerController {
             case "latex": return new LatexSymbolsTransformer(transformerInterface);
             case "verbal": return new NumToStringTransformer(transformerInterface);
             case "no-shortcut": return new ToShortcutTransformer(transformerInterface);
+            case "make-shortcuts": return new FromShortcutTransformer(transformerInterface);
             default: return transformerInterface;
         }
     }
