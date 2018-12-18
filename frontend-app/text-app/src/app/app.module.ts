@@ -8,18 +8,26 @@ import {CommonModule} from "@angular/common";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {DragDropListComponent} from './shared/drag-drop-list/drag-drop-list.component';
 import {HttpClientModule} from "@angular/common/http";
-
+import { MatDialogModule } from '@angular/material';
+import { DialogComponent } from './shared/dialog.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { DiffMatchPatchModule } from 'ng-diff-match-patch';
 @NgModule({
   declarations: [
     AppComponent,
-    DragDropListComponent
+    DragDropListComponent,
+    DialogComponent
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule,
+    NoopAnimationsModule,
+    DiffMatchPatchModule
   ],
   exports: [
     CommonModule,
@@ -27,7 +35,8 @@ import {HttpClientModule} from "@angular/common/http";
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule {
 }

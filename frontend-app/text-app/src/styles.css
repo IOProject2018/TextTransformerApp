@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html *
+{
+  font-family: Verdana !important;
+  text-align: center;
+}
+body {
+  padding-top: 30px;
+}
+ins{
+  color: black;
+  background: #6cfc6c;
+}
+
+del{
+  color: black;
+  background: #ff6e6e;
+}
+.equal{
+  color: black;
+}
+button {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+input {
+  widht: 200px;
+}
