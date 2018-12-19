@@ -1,0 +1,28 @@
+<div style="text-align:center">
+  <img width="453" alt="Put PP Logo" src="../assets/img/putLogoColor.png">
+</div>
+<h2>Dokonaj transformacji tekstu: </h2>
+<form [formGroup]="textForm">
+  <label>
+    <input [formControlName]="'text'" type="text" name="fname">
+  </label>
+  <button  type="submit" (click)="onSubmit()">Transformuj</button>
+</form>
+
+<!-- <div *ngIf=transformedString>
+  <p>
+      <label for="orignalTextBox">Orgianlny tekst:</label>
+  <input type="text" [value]=orginalString readonly>
+  </p>
+  <p>
+    <label for="orignalTextBox">Zmieniony tekst:</label>
+    <input type="text" [value]=transformedString readonly>
+  </p>
+  <p>
+      <label >Różnice :</label>
+      <pre diff [left]="orginalString" [right]="transformedString"></pre>
+
+</div> -->
+<app-drag-drop-list (transformationList)="readTransformationList($event)"></app-drag-drop-list>
+
+
