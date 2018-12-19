@@ -10,7 +10,6 @@ import pl.put.poznan.transformer.logic.TextTransformerInterface;
 
 
 public class DeleteDuplicateWordsTransformerTest
-
 {
     private TextTransformerInterface transformer;
 
