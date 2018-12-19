@@ -20,14 +20,7 @@ public class DeleteDuplicateWordsTransformerTest
         transformer = new DeleteDuplicateWordsTransformer(new TextTransformerImpl());
     }
 
-    @Test
-    public void noDuplicateTest()
-    {
-        String text = "Tu są są podwójne słowa słowa";
-        String result = "Tu są podwójne słowa";
 
-        assertEquals(transformer.transform(text), result);
-    }
 
     @Test
     public void shouldReturnWithoutDuplicate() {
