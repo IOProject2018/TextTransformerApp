@@ -23,18 +23,18 @@ public class DeletePLSymbolsTrarnsformerTest
     public void noPLnormalTest()
     {
         String text = "zażółć gęślą jaźń";
-        String result = "zazulc gesla jazn";
+        String result = "zazolc gesla jazn";
 
-        assertEquals(transformer.transform(text), (result));
+        assertEquals(transformer.transform(text), result);
     }
 
     @Test
     public void noPLCapitalizeTest()
     {
         String text = "Zażółć Gęślą jaźń Ćmy";
-        String result = "Zazulc Gesla jazn Cmy";
+        String result = "Zazolc Gesla jazn Cmy";
 
-        assertEquals(transformer.transform(text), (result));
+        assertEquals(transformer.transform(text), result);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class DeletePLSymbolsTrarnsformerTest
         String text = "ZAŻÓŁĆ GĘŚLĄ JAŹŃ";
         String result = "ZAZOLC GESLA JAZN";
 
-        assertEquals(transformer.transform(text), (result));
+        assertEquals(transformer.transform(text), result);
     }
 
 
