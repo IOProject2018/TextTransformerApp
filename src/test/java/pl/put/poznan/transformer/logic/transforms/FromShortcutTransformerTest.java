@@ -32,7 +32,7 @@ public class FromShortcutTransformerTest
     public void shortedUpperTest()
     {
         String text = "CO NA PRZYKŁAD!?";
-        String result = "CO NP!?";
+        String result = "CO NP.!?";
 
         assertEquals(transformer.transform(text), (result));
      }
