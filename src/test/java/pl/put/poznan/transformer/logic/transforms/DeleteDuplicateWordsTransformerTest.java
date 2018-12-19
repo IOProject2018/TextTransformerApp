@@ -29,7 +29,8 @@ public class DeleteDuplicateWordsTransformerTest
         assertEquals(transformer.transform(text), result);
     }
 
-    public void shouldReturnWithourDuplicate() {
+    @Test
+    public void shouldReturnWithoutDuplicate() {
         String text = "raz raz dwa dwa";
         String result = "raz dwa";
 
