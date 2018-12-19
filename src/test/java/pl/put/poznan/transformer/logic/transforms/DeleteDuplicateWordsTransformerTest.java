@@ -23,13 +23,13 @@ public class DeleteDuplicateWordsTransformerTest
     @Test
     public void noDuplicateTest()
     {
-        String text = "Tu są są podwójne słowa słowa.";
-        String result = "Tu są podwójne słowa.";
+        String text = "Tu są są podwójne słowa słowa";
+        String result = "Tu są podwójne słowa";
 
         assertEquals(transformer.transform(text), result);
     }
 
-    public void shouldReturnWithourPolsihCharacter() {
+    public void shouldReturnWithourDuplicate() {
         String text = "raz raz dwa dwa";
         String result = "raz dwa";
 
