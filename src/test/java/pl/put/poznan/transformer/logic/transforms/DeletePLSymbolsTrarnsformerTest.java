@@ -31,7 +31,7 @@ public class DeletePLSymbolsTrarnsformerTest
     public void noPLCapitalizeTest()
     {
         String text = "Zażółć Gęślą jaźń Ćmy";
-        String result = "Zazolc Gesla jazn Cmy";
+        String result = "Zazulc Gesla jazn Cmy";
 
         assertEquals(transformer.transform(text), (result));
     }
