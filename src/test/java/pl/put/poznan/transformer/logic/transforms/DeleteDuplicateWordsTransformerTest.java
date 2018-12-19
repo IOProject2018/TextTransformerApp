@@ -2,6 +2,7 @@ package pl.put.poznan.transformer.logic.transforms;
 
 
 import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
