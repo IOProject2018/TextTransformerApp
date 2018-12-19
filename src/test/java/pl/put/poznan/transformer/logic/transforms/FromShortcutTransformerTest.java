@@ -7,6 +7,7 @@ import pl.put.poznan.transformer.logic.TextTransformerImpl;
 import pl.put.poznan.transformer.logic.TextTransformerInterface;
 
 import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FromShortcutTransformerTest
 {
