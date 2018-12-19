@@ -26,7 +26,7 @@ public class DeleteDuplicateWordsTransformerTest
         String text = "Tu są są podwójne słowa słowa.";
         String result = "Tu są podwójne słowa.";
 
-        assertEquals(transformer.transform(text), (result));
+        assertEquals(transformer.transform(text), result);
     }
 
     public void shouldReturnWithourPolsihCharacter() {
