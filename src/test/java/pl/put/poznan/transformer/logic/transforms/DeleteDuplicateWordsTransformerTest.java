@@ -1,5 +1,6 @@
 package pl.put.poznan.transformer.logic.transforms;
 
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -7,8 +8,6 @@ import org.junit.Test;
 import pl.put.poznan.transformer.logic.TextTransformerImpl;
 import pl.put.poznan.transformer.logic.TextTransformerInterface;
 
-
-        import static org.junit.Assert.*;
 
 public class DeleteDuplicateWordsTransformerTest
 
@@ -30,5 +29,10 @@ public class DeleteDuplicateWordsTransformerTest
         assertEquals(transformer.transform(text), (result));
     }
 
+    public void shouldReturnWithourPolsihCharacter() {
+        String text = "raz raz dwa dwa";
+        String result = "raz dwa";
 
+        assertThat(transformer.transform(text)).isEqualTo(result);
+    }
 }
