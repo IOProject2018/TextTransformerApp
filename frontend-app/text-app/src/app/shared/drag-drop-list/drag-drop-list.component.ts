@@ -53,6 +53,10 @@ export class DragDropListComponent {
     {
       key: 'no-shortcut',
       text: 'Usun skroty'
+    },
+    {
+      key: 'translate',
+      text: 'Przetlumacz'
     }
   ];
 
