@@ -69,6 +69,7 @@ public class TextTransformerController {
             case "verbal": return new NumToStringTransformer(transformerInterface);
             case "no-shortcut": return new ToShortcutTransformer(transformerInterface);
             case "make-shortcuts": return new FromShortcutTransformer(transformerInterface);
+            case "translate": return new EngToPlTransformer(transformerInterface);
             default: return transformerInterface;
         }
     }
