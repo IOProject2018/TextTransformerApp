@@ -8,6 +8,7 @@ import pl.put.poznan.transformer.logic.TextTransformerInterface;
 
 import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 public class FromShortcutTransformerTest
 {
@@ -75,6 +76,46 @@ public class FromShortcutTransformerTest
         String result = "Drzwi";
 
         assertThat(transformer.transform(text)).isEqualTo(result);
+    }
+
+    /**
+     * mockito tests
+     */
+
+    @Test
+    public void testTransformShortFormAndCapitalize() {
+        TextTransformerInterface textTransformerInterface = mock(TextTransformerInterface.class);
+        when(textTransformerInterface.transform("I tym podobne I tak dalej")).thenReturn("Itp. Itd.");
+
+        FromShortcutTransformer text = new FromShortcutTransformer(textTransformerInterface);
+        String result = text.transform("I tym podobne I tak dalej");
+
+        verify(textTransformerInterface).transform("I tym podobne I tak dalej");
+        assertEquals("Itp. Itd.", result);
+    }
+
+    @Test
+    public void testTransformWithoutChanges() {
+        TextTransformerInterface textTransformerInterface = mock(TextTransformerInterface.class);
+        when(textTransformerInterface.transform("Drzwi")).thenReturn("Drzwi");
+
+        FromShortcutTransformer text = new FromShortcutTransformer(textTransformerInterface);
+        String result = text.transform("Drzwi");
+
+        verify(textTransformerInterface).transform("Drzwi");
+        assertEquals("Drzwi", result);
+    }
+
+    @Test
+    public void testTransformShortFormAndUppercase() {
+        TextTransformerInterface textTransformerInterface = mock(TextTransformerInterface.class);
+        when(textTransformerInterface.transform("PROFESOR MORZY")).thenReturn("PROF. MORZY");
+
+        FromShortcutTransformer text = new FromShortcutTransformer(textTransformerInterface);
+        String result = text.transform("PROFESOR MORZY");
+
+        verify(textTransformerInterface).transform("PROFESOR MORZY");
+        assertEquals("PROF. MORZY", result);
     }
 
 }

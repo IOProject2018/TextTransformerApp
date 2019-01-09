@@ -6,6 +6,8 @@ import pl.put.poznan.transformer.logic.TextTransformerImpl;
 import pl.put.poznan.transformer.logic.TextTransformerInterface;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class ToUpperTransformerTest {
     private TextTransformerInterface transformer;
@@ -21,5 +23,21 @@ public class ToUpperTransformerTest {
         String result = "TEKST MALYMI LITERAMI";
 
         assertThat(transformer.transform(text)).isEqualTo(result);
+    }
+
+    /**
+     * mockito tests
+     */
+
+    @Test
+    public void testTransformUpperText() {
+        TextTransformerInterface textTransformerInterface = mock(TextTransformerInterface.class);
+        when(textTransformerInterface.transform("male litery")).thenReturn("MALE LITERY");
+
+        ToUpperTransformer text = new ToUpperTransformer(textTransformerInterface);
+        String result = text.transform("male litery");
+
+        verify(textTransformerInterface).transform("male litery");
+        assertEquals("MALE LITERY", result);
     }
 }
