@@ -53,9 +53,33 @@ export class DragDropListComponent {
     {
       key: 'no-shortcut',
       text: 'Usun skroty'
+    },
+    {
+      key: 'translate',
+      text: 'Przetlumacz'
     }
   ];
-
+  onRandom()
+  {
+    let max= this.notUsed.length;//liczba dostepnych filtrow
+    for (var j =0; j < this.used.length;j++){
+      let filter = this.used[1];
+      this.notUsed.push(filter);
+      let index = this.used.indexOf(filter, 0);
+      this.used.splice(index,1)
+    }
+    if(max >0){
+      let randomAmount = Math.floor(Math.random() * (max) + 1); //ile liczb wylosować i przesunąć
+      for (var i = 0; i < randomAmount; i++) {
+        max = this.notUsed.length;
+        let randomFilter = Math.floor(Math.random() * (max) + 0); //wylosowany indeks z dostepnych filtrow
+        let filter = this.notUsed[randomFilter];//wylosowany filtr z dostepnych
+        this.used.push(filter);
+        let index = this.notUsed.indexOf(filter, 0);
+        this.notUsed.splice(index,1)
+      }
+    }
+  }
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
